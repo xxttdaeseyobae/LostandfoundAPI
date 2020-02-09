@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const userRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 const feedbackRouter = require('./routes/feedback');
+const humanRouter = require('./routes/human');
 const dotenv = require('dotenv').config();
 const uploadRouter = require('./routes/upload');
 const auth = require('./auth');
@@ -27,6 +28,7 @@ app.use('/users', userRouter);
 app.use('/upload', uploadRouter);
 app.use('/product', productRouter);
 app.use('/feedback', feedbackRouter);
+app.use('/human', humanRouter);
 app.use(auth.verifyUser);
 
 app.use((err, req, res, next) => {
