@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
-const petsSchema = new mongoose.Schema({
-    breed: {
+const lostSchema = new mongoose.Schema({
+    name: {
         type: String,
         trim:true
     },
-    locationfound: {
-        type: String,
-        required: true,
+    type:{
+        type:String,
         trim:true
     },
-    sex: {
+    location: {
         type: String,
         required: true,
         trim:true
@@ -33,12 +32,7 @@ const petsSchema = new mongoose.Schema({
         required: true,
         trim:true
     },
-    type: {
-        type: String,
-        required: true,
-        trim:true
-    },
     
 });
 
-module.exports = mongoose.model('Pets', petsSchema);
+module.exports = mongoose.model('Lost', lostSchema);
