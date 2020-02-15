@@ -1,11 +1,11 @@
 const express = require('express');
 const jwt  = require('jsonwebtoken')
 var router = express.Router();
-const lost = require('../models/lost');
+const found = require('../models/found');
 const auth = require('../auth');
 
-router.post('/addlost', (req, res, next) => {
-    lost.create({
+router.post('/addfound', (req, res, next) => {
+    found.create({
         name: req.body.name,
         type: req.body.type,
         location: req.body.location,
@@ -13,19 +13,19 @@ router.post('/addlost', (req, res, next) => {
         details:req.body.details,
         image:req.body.image,
         status:req.body.status
-    }).then((lost) => {
-        let token = jwt.sign({ losyId: lost._id }, process.env.SECRET);
-        res.json({ status: "Lost Added Successfully!", token: token });
+    }).then((found) => {
+        let token = jwt.sign({ losyId: found._id }, process.env.SECRET);
+        res.json({ status: "Found Added Successfully!", token: token });
     }).catch(next);
 });
 
-router.get('/listlost',(req,res,next)=>{
-    lost.find({},(err,treks)=>
+router.get('/listfound',(req,res,next)=>{
+    found.find({},(err,treks)=>
     {
         if(err){
             res.json(next)
         }
-        res.json(lost)
+        res.json(found)
     });
 })
 

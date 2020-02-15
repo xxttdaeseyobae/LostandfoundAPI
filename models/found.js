@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
-    productname: {
+const foundSchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: true,
+        trim:true
+    },
+    type:{
+        type:String,
         trim:true
     },
     location: {
@@ -32,4 +35,4 @@ const productSchema = new mongoose.Schema({
     
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Found', foundSchema);

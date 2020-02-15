@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require('morgan');
 const userRouter = require('./routes/users');
-const productRouter = require('./routes/products');
 const feedbackRouter = require('./routes/feedback');
 const humanRouter = require('./routes/human');
-const petsRouter = require('./routes/pets');
 const lostRouter = require('./routes/lost');
+const foundRouter = require('./routes/found');
 const dotenv = require('dotenv').config();
 const uploadRouter = require('./routes/upload');
 const auth = require('./auth');
@@ -28,11 +27,10 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
 
 app.use('/users', userRouter);
 app.use('/upload', uploadRouter);
-app.use('/product', productRouter);
 app.use('/feedback', feedbackRouter);
 app.use('/human', humanRouter);
-app.use('/pets', petsRouter);
 app.use('/lost', lostRouter);
+app.use('/found', foundRouter);
 app.use(auth.verifyUser);
 
 app.use((err, req, res, next) => {
